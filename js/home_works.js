@@ -82,3 +82,44 @@ reset.addEventListener('click', () => {
   stop.disabled = true;
   reset.disabled = true;
 });
+
+//character
+const charactersList = document.querySelector('.characters-list')
+
+const DEFAULT_IMAGE = 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
+
+const request = new XMLHttpRequest()
+request.open('GET', '../data/characters.json')
+request.setRequestHeader('Content-type', 'application/json')
+request.send()
+
+request.onload = () => {
+    const characters = JSON.parse(request.response)
+
+    characters.forEach(character => {
+        const card = document.createElement('div')
+
+        card.classList.add('character-card')
+
+        card.innerHTML = `
+            <img src="${character.person_photo || DEFAULT_IMAGE}" alt="${character.name}">
+            <h3>${character.name}</h3>
+            <p>Age: ${character.age}</p>
+            <p>${character.description}</p>
+        `
+
+        charactersList.append(card)
+    })
+}
+
+//bio 
+const bioRequest = new XMLHttpRequest()
+
+bioRequest.open('GET', '../data/bio.json')
+bioRequest.setRequestHeader('Content-type', 'application/json')
+bioRequest.send()
+
+bioRequest.onload = () => {
+    const bio = JSON.parse(bioRequest.response)
+    console.log('BIO:', bio)
+}
