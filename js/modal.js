@@ -19,9 +19,9 @@ modal.onclick = (event) => {
 btnClose.onclick = closeModal
 btnOpen.onclick = showModal
 
-let timeModal = setInterval(function() {
-    showModal()
-}, 10000);
+// let timeModal = setInterval(function() {
+//     showModal()
+// }, 10000);
 
 
 const onScroll = () => {
