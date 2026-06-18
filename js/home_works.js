@@ -84,42 +84,53 @@ reset.addEventListener('click', () => {
 });
 
 //character
-const charactersList = document.querySelector('.characters-list')
-
-const DEFAULT_IMAGE = 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
-
-const request = new XMLHttpRequest()
-request.open('GET', '../data/characters.json')
-request.setRequestHeader('Content-type', 'application/json')
-request.send()
-
-request.onload = () => {
-    const characters = JSON.parse(request.response)
-
-    characters.forEach(character => {
-        const card = document.createElement('div')
-
-        card.classList.add('character-card')
-
+const loadCharacters = async () => {
+    try {
+      const response = await fetch('../data/characters.json');
+  
+      if (!response.ok) {
+        throw new Error('Ошибка загрузки characters');
+      }
+  
+      const characters = await response.json();
+  
+      characters.forEach(character => {
+        const card = document.createElement('div');
+        card.classList.add('character-card');
+  
         card.innerHTML = `
-            <img src="${character.person_photo || DEFAULT_IMAGE}" alt="${character.name}">
-            <h3>${character.name}</h3>
-            <p>Age: ${character.age}</p>
-            <p>${character.description}</p>
-        `
-
-        charactersList.append(card)
-    })
-}
+          <img src="${character.person_photo || DEFAULT_IMAGE}" alt="${character.name}">
+          <h3>${character.name}</h3>
+          <p>Age: ${character.age}</p>
+          <p>${character.description}</p>
+        `;
+  
+        charactersList.append(card);
+      });
+  
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+  loadCharacters();
 
 //bio 
-const bioRequest = new XMLHttpRequest()
-
-bioRequest.open('GET', '../data/bio.json')
-bioRequest.setRequestHeader('Content-type', 'application/json')
-bioRequest.send()
-
-bioRequest.onload = () => {
-    const bio = JSON.parse(bioRequest.response)
-    console.log('BIO:', bio)
-}
+const loadBio = async () => {
+    try {
+      const response = await fetch('../data/bio.json');
+  
+      if (!response.ok) {
+        throw new Error('Ошибка загрузки bio');
+      }
+  
+      const bio = await response.json();
+  
+      console.log('BIO:', bio);
+  
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+  loadBio();

@@ -1,0 +1,17 @@
+#posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .post-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  
+  .post-card img {
+    width: 100%;
+    border-radius: 8px;
+  }

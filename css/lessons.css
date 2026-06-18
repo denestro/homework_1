@@ -130,24 +130,24 @@
 /*-------CONVERTER--------*/
 
 
-.converter {
-    padding: 100px 0;
-    background-color: black;
-}
+    .converter {
+        padding: 100px 0;
+        background-color: black;
+    }
 
-.inner_converter {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 50px;
-}
+    .inner_converter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 50px;
+    }
 
-.inner_converter > div {
-    display: flex;
-    flex-direction: column;
-}
+    .inner_converter > div {
+        display: flex;
+        flex-direction: column;
+    }
 
 /*------WEATHER------*/
 
